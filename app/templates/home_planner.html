@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Interior Planner - PocketSmart AI</title>
+</head>
+
+<body>
+
+    <h1>🏠 Home Interior Planner</h1>
+
+    <p>Plan your home interior according to your budget.</p>
+
+    <form action="/generate-home" method="post" id="homePlannerForm">
+
+        <label>Budget:</label><br>
+        <input
+            type="number"
+            name="budget"
+            placeholder="Enter your budget"
+            required
+        >
+        <br><br>
+
+        <label>Number of Rooms:</label><br>
+        <input
+            type="text"
+            name="rooms"
+            placeholder="Example: 2BHK"
+            required
+        >
+        <br><br>
+
+        <label>Interior Style:</label><br>
+        <select name="style" required>
+            <option value="">Select style</option>
+            <option value="Modern">Modern</option>
+            <option value="Minimal">Minimal</option>
+            <option value="Traditional">Traditional</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Bohemian">Bohemian</option>
+        </select>
+        <br><br>
+
+        <label>Your Priorities:</label><br>
+        <textarea
+            name="priorities"
+            placeholder="Example: Sofa, curtains, lights, storage..."
+            rows="5"
+            cols="40"
+            required
+        ></textarea>
+        <br><br>
+
+        <label>Location:</label><br>
+        <input
+            type="text"
+            name="location"
+            placeholder="Example: Chennai"
+        >
+        <br><br>
+
+        <button type="submit" id="generateButton">
+            Generate Recommendation
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/dashboard">⬅ Back to Dashboard</a>
+
+    <script>
+        document.getElementById("homePlannerForm").addEventListener("submit", function () {
+            const button = document.getElementById("generateButton");
+
+            button.disabled = true;
+            button.innerText = "Generating...";
+        });
+    </script>
+
+</body>
+</html>

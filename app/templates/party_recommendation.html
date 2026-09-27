@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PocketSmart AI - Party Recommendation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .dashboard-link {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1050px;
+            margin: 45px auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .hero-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .hero p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .summary {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-title {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .summary-item {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 14px;
+        }
+
+        .summary-label {
+            display: block;
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .summary-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .recommendation-box {
+            background: white;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            margin-bottom: 30px;
+        }
+
+        .recommendation-text {
+            white-space: pre-wrap;
+            line-height: 1.8;
+            font-size: 15px;
+            color: #374151;
+            background: #f8fafc;
+            padding: 22px;
+            border-radius: 14px;
+            border-left: 4px solid #6366f1;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: #111827;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #111827;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 94%;
+                margin: 30px auto;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+            .summary,
+            .recommendation-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">🤖 PocketSmart AI</div>
+
+        <a href="/dashboard" class="dashboard-link">
+            ← Dashboard
+        </a>
+    </nav>
+
+    <main class="container">
+
+        <section class="hero">
+            <div class="hero-icon">🎉</div>
+
+            <h1>Your Smart Party Recommendation</h1>
+
+            <p>
+                Your personalized party budget plan is ready.
+            </p>
+        </section>
+
+
+        <section class="summary">
+
+            <div class="section-title">
+                📊 Party Summary
+            </div>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span class="summary-label">
+                        Budget
+                    </span>
+
+                    <span class="summary-value">
+                        ₹{{ budget }}
+                    </span>
+                </div>
+
+
+                <div class="summary-item">
+                    <span class="summary-label">
+                        Event
+                    </span>
+
+                    <span class="summary-value">
+                        {{ event_type }}
+                    </span>
+                </div>
+
+
+                <div class="summary-item">
+                    <span class="summary-label">
+                        Guests
+                    </span>
+
+                    <span class="summary-value">
+                        {{ guests }}
+                    </span>
+                </div>
+
+
+                <div class="summary-item">
+                    <span class="summary-label">
+                        Location
+                    </span>
+
+                    <span class="summary-value">
+                        {{ location }}
+                    </span>
+                </div>
+
+
+                <div class="summary-item">
+                    <span class="summary-label">
+                        Food
+                    </span>
+
+                    <span class="summary-value">
+                        {{ food_preference }}
+                    </span>
+                </div>
+
+
+                <div class="summary-item">
+                    <span class="summary-label">
+                        Decoration
+                    </span>
+
+                    <span class="summary-value">
+                        {{ decoration_style }}
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="recommendation-box">
+
+            <div class="section-title">
+                🤖 AI Recommendation
+            </div>
+
+            <div class="recommendation-text">{{ recommendation }}</div>
+
+        </section>
+
+
+        <div class="actions">
+
+            <a href="/party-planner" class="btn btn-primary">
+                🎉 Plan Again
+            </a>
+
+            <a href="/dashboard" class="btn btn-secondary">
+                🏠 Dashboard
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

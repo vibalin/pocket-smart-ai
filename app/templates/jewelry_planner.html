@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jewelry Planner - PocketSmart AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .navbar {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        .back {
+            text-decoration: none;
+            color: #4f46e5;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: 45px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .icon {
+            font-size: 55px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .form-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #4f46e5;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .button {
+            width: 100%;
+            border: none;
+            background: #4f46e5;
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #3730a3;
+        }
+
+        .button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .footer-link a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 94%;
+                margin: 30px auto;
+            }
+
+            .form-card {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🤖 PocketSmart AI</div>
+
+        <a href="/dashboard" class="back">
+            ← Dashboard
+        </a>
+    </nav>
+
+    <main class="container">
+
+        <div class="header">
+            <div class="icon">💎</div>
+
+            <h1>Jewelry Planner</h1>
+
+            <p class="subtitle">
+                Find the right jewelry plan according to your budget and style.
+            </p>
+        </div>
+
+        <div class="form-card">
+
+            <form action="/generate-jewelry" method="post" id="jewelryPlannerForm">
+
+                <div class="form-group">
+                    <label>💰 Budget</label>
+
+                    <input
+                        type="number"
+                        name="budget"
+                        placeholder="Enter your budget"
+                        min="1"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>💍 Occasion</label>
+
+                    <select name="occasion" required>
+                        <option value="">Select occasion</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Engagement">Engagement</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Anniversary">Anniversary</option>
+                        <option value="Festival">Festival</option>
+                        <option value="Daily Wear">Daily Wear</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>💎 Jewelry Type</label>
+
+                    <select name="jewelry_type" required>
+                        <option value="">Select jewelry type</option>
+                        <option value="Necklace">Necklace</option>
+                        <option value="Earrings">Earrings</option>
+                        <option value="Ring">Ring</option>
+                        <option value="Bangles">Bangles</option>
+                        <option value="Bracelet">Bracelet</option>
+                        <option value="Chain">Chain</option>
+                        <option value="Jewelry Set">Jewelry Set</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>✨ Metal</label>
+
+                    <select name="metal" required>
+                        <option value="">Select metal</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Rose Gold">Rose Gold</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Diamond">Diamond</option>
+                        <option value="Artificial">Artificial</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>🌟 Style</label>
+
+                    <select name="style" required>
+                        <option value="">Select style</option>
+                        <option value="Traditional">Traditional</option>
+                        <option value="Modern">Modern</option>
+                        <option value="Minimal">Minimal</option>
+                        <option value="Elegant">Elegant</option>
+                        <option value="Luxury">Luxury</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>👗 Outfit Description</label>
+
+                    <textarea
+                        name="outfit_description"
+                        rows="4"
+                        placeholder="Example: Kanchipuram saree, maroon blouse..."
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>📍 Location</label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        placeholder="Example: Chennai"
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="button"
+                    id="generateButton"
+                >
+                    💎 Generate Recommendation
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="footer-link">
+            <a href="/dashboard">← Back to Dashboard</a>
+        </div>
+
+    </main>
+
+    <script>
+        document.getElementById("jewelryPlannerForm").addEventListener("submit", function () {
+            const button = document.getElementById("generateButton");
+
+            button.disabled = true;
+            button.innerText = "Generating...";
+        });
+    </script>
+
+</body>
+</html>
